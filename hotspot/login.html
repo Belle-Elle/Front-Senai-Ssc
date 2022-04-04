@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internet hotspot - Log in</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+     two other colors
+
+<body class="lite">
+<body class="dark">
+
+<header>
+    <div>
+        <img class="header" src="img/Degrade.png" alt="$"; 
+    </div>
+</header>
+
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="CPF" />
+        <input type="hidden" name="Senha" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.cpf.value = document.login.cpf.value;
+            document.sendin.senha.value = hexMD5('$(chap-id)' + document.login.senha.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif)
+    <div class="ie-fixMinHeight">
+        <div class="main">
+            <div class="wrap animated fadeIn">
+                <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                    <input type="hidden" name="dst" value="$(link-orig)" />
+                    <input type="hidden" name="popup" value="true" />
+                    <svg class="logo" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174 42"></svg>
+
+
+                    <p class="info $(if error)alert$(endif)">
+                        Olá bem vindo <br /> </a>
+                    </p>
+                    <label>
+                        <img class="ico" src="" alt="#" />
+                        <input name="CPF" type="text" value="CPF" placeholder="CPF" />
+                    </label>
+
+                    <label>
+                        <img class="ico" src="img/password.svg" alt="#" /> 
+                        <input name="Senha" type="Senha" placeholder="Senha" />
+                    </label>
+
+                    <input type="submit" value="login" />
+
+                </form>
+                <p class="info bt"></p>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
